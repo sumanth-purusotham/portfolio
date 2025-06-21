@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome - ItsSumanth</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: #f00;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .login-box {
+      background: #111;
+      border: 2px solid #f00;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 30px red;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      width: 80%;
+      border: 2px solid #f00;
+      border-radius: 6px;
+      background: black;
+      color: #f00;
+    }
+    button:hover {
+      background: #f00;
+      color: black;
+      cursor: pointer;
+    }
+    .error {
+      margin-top: 10px;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>🔐 Solve to Unlock Portfolio</h2>
+    <p>Solve: <span id="question"></span></p>
+    <input type="number" id="answer" placeholder="Your answer" />
+    <button onclick="checkAnswer()">Enter</button>
+    <p class="error" id="error"></p>
+  </div>
+
+  <script>
+    let a, b, op, correct;
+
+    function generate() {
+      a = Math.floor(Math.random() * 10) + 1;
+      b = Math.floor(Math.random() * 10) + 1;
+      const ops = ['+', '-', '*'];
+      op = ops[Math.floor(Math.random() * ops.length)];
+      correct = eval(op === '*' ? `${a} * ${b}` : `${a} ${op} ${b}`);
+      document.getElementById('question').textContent = `${a} ${op.replace('*', '×')} ${b} = ?`;
+    }
+
+    function checkAnswer() {
+      const user = parseInt(document.getElementById('answer').value);
+      if (user === correct) {
+        window.location.href = 'portfolio.html'; // your actual portfolio file
+      } else {
+        document.getElementById('error').textContent = "❌ Try again!";
+        generate();
+      }
+    }
+
+    generate();
+  </script>
+</body>
+</html>
