@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ItsSumanth - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Orbitron&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background-color: #000;
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .circuit-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 200%; height: 200%;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 0, 0, 0.05) 0px,
+        rgba(255, 0, 0, 0.05) 2px,
+        transparent 2px,
+        transparent 20px
+      );
+      animation: drift 30s linear infinite;
+      z-index: -2;
+      pointer-events: none;
+    }
+    @keyframes drift {
+      0% { transform: translate(0,0) rotate(0deg); }
+      100% { transform: translate(-100px, -100px) rotate(360deg); }
+    }
+    header {
+      background:linear-gradient(45deg,#660000,#990000,#cc0000,#330000);
+      padding: 20px;
+      text-align: center;
+      font-size: 2.5em;
+      font-weight: bold;
+      border-bottom: 3px solid #f00;
+      animation: animate 3s linear infinite;
+    }
+    @keyframes animate {
+      0% { background-position:0% 50%; }
+      50% { background-position:100% 50%; }
+      100% { background-position:0% 50%; }
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #111;
+      border-bottom: 2px solid #f00;
+    }
+    nav a {
+      color: #f00;
+      text-decoration: none;
+      padding: 15px 20px;
+      transition: 0.3s;
+    }
+    nav a:hover { background: #f00; color: #000; }
+    section {
+      padding: 40px;
+      border-bottom: 1px solid #f00;
+    }
+    h2 {
+      color: #f00;
+      text-align: center;
+      font-size: 2em;
+    }
+    .about, .contact, .certificate-container, .portfolio-container, .social-shuffle {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+    .certificate-container span, .portfolio-item {
+      display: inline-block;
+      border: 2px solid #f00;
+      margin: 10px;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    input, textarea, button {
+      display: block;
+      width: 80%;
+      margin: 10px auto;
+      padding: 10px;
+      background: #111;
+      color: #f00;
+      border: 2px solid #f00;
+      border-radius: 5px;
+    }
+    button:hover { background: #f00; color: #000; }
+    .social-card {
+      display: inline-block;
+      background: #111;
+      border: 2px solid #f00;
+      padding: 15px;
+      margin: 10px;
+      border-radius: 10px;
+    }
+    footer {
+      background: #111;
+      color: #f00;
+      text-align: center;
+      padding: 20px;
+      border-top: 2px solid #f00;
+    }
+  </style>
+</head>
+<body>
+  <div class="circuit-bg"></div>
+  <header>ItsSumanth</header>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <a href="#social">Social</a>
+  </nav>  <section id="about">
+    <h2 id="type"></h2>
+    <p class="about">I'm <strong>Purusotham Sumanth</strong>, passionate learner stepping into tech.</p>
+  </section>  <section id="skills">
+    <h2>Tech Skills</h2>
+    <div class="certificate-container">
+      <span>Basic HTML</span>
+      <span>Basic CSS</span>
+      <span>Basic C</span>
+      <span>Basic Python</span>
+    </div>
+  </section>  <section id="projects">
+    <h2>Future Projects</h2>
+    <p class="about">Aiming 100+ projects in 6 months!</p>
+  </section>  <section id="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <p>Email: <a href="mailto:sumanthpurusotham@gmail.com">sumanthpurusotham@gmail.com</a></p>
+  </section>  <section id="social">
+    <h2>Connect</h2>
+    <div class="social-shuffle">
+      <div class="social-card"><a href="https://github.com/sumanth-purusotham"><i class="fab fa-github"></i> GitHub</a></div>
+      <div class="social-card"><a href="https://www.instagram.com/Itssumanth__20"><i class="fab fa-instagram"></i> Instagram</a></div>
+      <div class="social-card"><a href="https://www.linkedin.com/in/purusotham-sumanth"><i class="fab fa-linkedin"></i> LinkedIn</a></div>
+    </div>
+  </section>  <footer>&copy; 2025 Purusotham Sumanth. All rights reserved.</footer>  <script>
+    // Typing Text Effect
+    const texts = ["Cyber Security Enthusiast", "AI/ML Explorer", "Future Developer"];
+    let count = 0, index = 0, currentText = '', letter = '';
+    (function type() {
+      if (count === texts.length) count = 0;
+      currentText = texts[count];
+      letter = currentText.slice(0, ++index);
+      document.getElementById('type').textContent = letter;
+      if(letter.length === currentText.length){
+        count++; index = 0;
+        setTimeout(type, 1000);
+      } else { setTimeout(type, 150); }
+    })();
+
+    // Neon Cursor Trail
+    document.addEventListener('mousemove', e => {
+      const trail = document.createElement('div');
+      trail.style.cssText = `
+        position: absolute;
+        width: 8px; height: 8px;
+        background: red;
+        border-radius: 50%;
+        pointer-events: none;
+        top: ${e.pageY}px; left: ${e.pageX}px;
+        box-shadow: 0 0 10px red;
+        animation: fade 1s forwards;
+        z-index:9999;
+      `;
+      document.body.appendChild(trail);
+      setTimeout(() => trail.remove(), 1000);
+    });
+
+    // Glitch Text Effect on Hover
+    document.querySelectorAll('h2').forEach(el => {
+      el.addEventListener('mouseover', () => {
+        let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        let original = el.textContent;
+        let i = 0;
+        const interval = setInterval(() => {
+          el.textContent = el.textContent.split('').map((c, idx) => idx < i ? original[idx] : chars[Math.floor(Math.random()*chars.length)] ).join('');
+          i++;
+          if(i >= original.length) clearInterval(interval);
+        }, 50);
+      });
+    });
+  </script></body>
+</html>
