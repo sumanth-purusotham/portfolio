@@ -52,6 +52,7 @@
       justify-content: center;
       background: #111;
       border-bottom: 2px solid #f00;
+      flex-wrap: wrap;
     }
     nav a {
       color: #f00;
@@ -80,6 +81,12 @@
       margin: 10px;
       padding: 10px;
       border-radius: 10px;
+    }
+    .certificate-container img {
+      width: 250px;
+      border: 2px solid #f00;
+      border-radius: 10px;
+      margin: 10px;
     }
     input, textarea, button {
       display: block;
@@ -121,6 +128,8 @@
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
+    <a href="#workshops">Workshops</a>
+    <a href="#hackathons">Hackathons</a>
     <a href="#contact">Contact</a>
     <a href="#social">Social</a>
   </nav>
@@ -128,10 +137,9 @@
   <section id="about">
     <h2 id="type"></h2>
     <div class="about" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 30px;">
-     <img src="https://raw.githubusercontent.com/sumanth-purusotham/portfolio/main/profile.jpg"
-     alt="Purusotham Sumanth"
-     style="width: 200px; border-radius: 15px; border: 2px solid #f00;" />
-
+      <img src="https://raw.githubusercontent.com/sumanth-purusotham/portfolio/main/profile.jpg"
+      alt="Purusotham Sumanth"
+      style="width: 200px; border-radius: 15px; border: 2px solid #f00;" />
       <div style="max-width: 500px; text-align: left;">
         <p>I'm <strong>Purusotham Sumanth</strong>, a passionate and curious learner, currently stepping into the world of technology and software development.</p>
         <p>As a student, I'm constantly exploring new tools, languages, and frameworks to build a solid foundation for my career in tech.</p>
@@ -154,6 +162,38 @@
   <section id="projects">
     <h2>Future Projects</h2>
     <p class="about">Aiming 100+ projects in 6 months!</p>
+  </section>
+
+  <section id="workshops">
+    <h2>Workshops Attended</h2>
+    <div class="certificate-container">
+      <div>
+        <p>IIT Hyderabad – Ethical Hacking & Cybersecurity</p>
+        <img src="https://raw.githubusercontent.com/sumanth-purusotham/portfolio/main/workshop1%20iit.jpg" alt="Workshop 1">
+      </div>
+      <div>
+        <p>IIT Hyderabad – Security Awareness</p>
+        <img src="https://raw.githubusercontent.com/sumanth-purusotham/portfolio/main/workshop2%20iit.jpg" alt="Workshop 2">
+      </div>
+      <div>
+        <p>IIT Hyderabad – AI & Threat Modelling</p>
+        <img src="https://raw.githubusercontent.com/sumanth-purusotham/portfolio/main/workshop3%20iit.jpg" alt="Workshop 3">
+      </div>
+    </div>
+  </section>
+
+  <section id="hackathons">
+    <h2>Hackathons Participated</h2>
+    <div class="certificate-container">
+      <div>
+        <p>VIIT Vizag Hackathon</p>
+        <img src="https://raw.githubusercontent.com/sumanth-purusotham/portfolio/main/hackthon1.jpg" alt="Hackathon 1">
+      </div>
+      <div>
+        <p>IIITBH National Hackathon</p>
+        <img src="https://raw.githubusercontent.com/sumanth-purusotham/portfolio/main/hackthon2.jpg" alt="Hackathon 2">
+      </div>
+    </div>
   </section>
 
   <section id="contact">
@@ -180,7 +220,6 @@
   <footer>&copy; 2025 Purusotham Sumanth. All rights reserved.</footer>
 
   <script>
-    // Typing Text Effect
     const texts = ["Cyber Security Enthusiast", "AI/ML Explorer", "Future Developer"];
     let count = 0, index = 0, currentText = '', letter = '';
     (function type() {
@@ -194,7 +233,6 @@
       } else { setTimeout(type, 150); }
     })();
 
-    // Neon Cursor Trail
     document.addEventListener('mousemove', e => {
       const trail = document.createElement('div');
       trail.style.cssText = `
@@ -212,7 +250,6 @@
       setTimeout(() => trail.remove(), 1000);
     });
 
-    // Glitch Text Effect on Hover
     document.querySelectorAll('h2').forEach(el => {
       el.addEventListener('mouseover', () => {
         let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -226,19 +263,16 @@
       });
     });
 
-    // Email Form Submit Handler
     document.getElementById('contact-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       const status = document.getElementById('form-status');
       const data = new FormData(this);
-
       try {
         const res = await fetch(this.action, {
           method: this.method,
           body: data,
           headers: { 'Accept': 'application/json' }
         });
-
         if (res.ok) {
           status.style.color = "lime";
           status.textContent = "✅ Message sent successfully!";
