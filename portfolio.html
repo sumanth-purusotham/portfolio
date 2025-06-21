@@ -99,6 +99,11 @@
       margin: 10px;
       border-radius: 10px;
     }
+    #form-status {
+      font-size: 1em;
+      font-weight: bold;
+      margin-top: 10px;
+    }
     footer {
       background: #111;
       color: #f00;
@@ -117,7 +122,9 @@
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
     <a href="#social">Social</a>
-  </nav>  <section id="about">
+  </nav>
+
+ <section id="about">
   <h2 id="type"></h2>
   <div class="about">
     <p>I'm <strong>Purusotham Sumanth</strong>, a passionate and curious learner, currently stepping into the world of technology and software development.</p>
@@ -126,6 +133,8 @@
     <p>My goal is to contribute to meaningful projects and collaborate with developers worldwide while continuously improving my coding abilities.</p>
   </div>
 </section>
+
+
   <section id="skills">
     <h2>Tech Skills</h2>
     <div class="certificate-container">
@@ -134,26 +143,37 @@
       <span>Basic C</span>
       <span>Basic Python</span>
     </div>
-  </section>  <section id="projects">
+  </section>
+
+  <section id="projects">
     <h2>Future Projects</h2>
     <p class="about">Aiming 100+ projects in 6 months!</p>
-  </section>  <section id="contact">
+  </section>
+
+  <section id="contact">
     <h2>Contact Me</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea rows="5" placeholder="Your Message" required></textarea>
+    <form id="contact-form" action="https://formspree.io/f/xvgrbdaw" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
       <button type="submit">Send</button>
+      <p id="form-status"></p>
     </form>
     <p>Email: <a href="mailto:sumanthpurusotham@gmail.com">sumanthpurusotham@gmail.com</a></p>
-  </section>  <section id="social">
+  </section>
+
+  <section id="social">
     <h2>Connect</h2>
     <div class="social-shuffle">
       <div class="social-card"><a href="https://github.com/sumanth-purusotham"><i class="fab fa-github"></i> GitHub</a></div>
       <div class="social-card"><a href="https://www.instagram.com/Itssumanth__20"><i class="fab fa-instagram"></i> Instagram</a></div>
       <div class="social-card"><a href="https://www.linkedin.com/in/purusotham-sumanth"><i class="fab fa-linkedin"></i> LinkedIn</a></div>
     </div>
-  </section>  <footer>&copy; 2025 Purusotham Sumanth. All rights reserved.</footer>  <script>
+  </section>
+
+  <footer>&copy; 2025 Purusotham Sumanth. All rights reserved.</footer>
+
+  <script>
     // Typing Text Effect
     const texts = ["Cyber Security Enthusiast", "AI/ML Explorer", "Future Developer"];
     let count = 0, index = 0, currentText = '', letter = '';
@@ -199,5 +219,34 @@
         }, 50);
       });
     });
-  </script></body>
+
+    // Email Form Submit Handler
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const status = document.getElementById('form-status');
+      const data = new FormData(this);
+
+      try {
+        const res = await fetch(this.action, {
+          method: this.method,
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          status.style.color = "lime";
+          status.textContent = "✅ Message sent successfully!";
+          this.reset();
+        } else {
+          const errData = await res.json();
+          status.style.color = "red";
+          status.textContent = "❌ Failed to send: " + (errData.error || "Try again later.");
+        }
+      } catch (error) {
+        status.style.color = "red";
+        status.textContent = "❌ Network error. Please try again.";
+      }
+    });
+  </script>
+</body>
 </html>
